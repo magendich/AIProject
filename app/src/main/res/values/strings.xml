@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Car Rate AI</string>
+    <string name="take_car_picture">Сделать фото авто</string>
+    <string name="analyze_photo">Анализировать фото</string>
+    <string name="gallery">Галерея</string>"Сделать фото"
+    <string name="take_picture">Сделать фото</string>
+    <string name="camera_not_ready">Камера не готова</string>
 </resources>

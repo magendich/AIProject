@@ -1,4 +1,4 @@
-package com.example.aiproject.ui.compose.components
+package com.example.aiproject.presentation.ui.compose.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -10,7 +10,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.aiproject.R
-import com.example.aiproject.ui.theme.AIProjectTheme
+import com.example.aiproject.presentation.ui.theme.AIProjectTheme
 import kotlinx.coroutines.delay
 
 @Composable

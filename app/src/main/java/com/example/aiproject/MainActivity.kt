@@ -7,7 +7,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,8 +14,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.aiproject.ui.compose.components.SplashScreen
-import com.example.aiproject.ui.theme.AIProjectTheme
+import com.example.aiproject.presentation.ui.compose.components.MainScreen
+import com.example.aiproject.presentation.ui.compose.components.SplashScreen
+import com.example.aiproject.presentation.ui.theme.AIProjectTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,31 +25,35 @@ class MainActivity : ComponentActivity() {
         setContent {
             AIProjectTheme {
                 var showSplash by remember { mutableStateOf(true) }
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    if (showSplash)
-                        SplashScreen { showSplash = false }
-                    else Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                MainApp(
+                    showSplash = showSplash,
+                    onSplashComplete = { showSplash = false }
+                )
             }
         }
     }
 }
 
+
 @Composable
-private fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun MainApp(
+    showSplash: Boolean,
+    onSplashComplete: () -> Unit
+) {
+    Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+        if (showSplash)
+            SplashScreen(onFinish = onSplashComplete)
+        else MainScreen(modifier = Modifier.padding(innerPadding))
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun MainAppPreview() {
     AIProjectTheme {
-        Greeting("Android")
+        MainApp(
+            showSplash = false,
+            onSplashComplete = {}
+        )
     }
 }
