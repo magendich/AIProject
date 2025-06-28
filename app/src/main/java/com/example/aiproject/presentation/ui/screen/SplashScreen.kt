@@ -1,4 +1,4 @@
-package com.example.aiproject.presentation.ui.compose.components
+package com.example.aiproject.presentation.ui.screen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

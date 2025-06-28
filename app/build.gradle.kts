@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
+    kotlin("kapt")
 }
 
 android {
@@ -39,6 +41,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -57,6 +61,18 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.accompanist.permissions)
     testImplementation(libs.junit)
+
+    //  Hilt
+    implementation(libs.hilt.core)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    //  Retrofit 
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.gson)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))

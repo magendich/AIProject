@@ -14,10 +14,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.aiproject.presentation.ui.compose.components.MainScreen
-import com.example.aiproject.presentation.ui.compose.components.SplashScreen
+import com.example.aiproject.presentation.ui.screen.MainScreen
+import com.example.aiproject.presentation.ui.screen.SplashScreen
 import com.example.aiproject.presentation.ui.theme.AIProjectTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
