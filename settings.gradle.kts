@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AIProject"
 include(":app")
+include(":aicamera")
+include(":common")

@@ -25,6 +25,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -140,36 +141,42 @@ fun CameraScreen(
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            Button(onClick = {
-                if (imageCapture == null) {
-                    cameraError = "Камера не готова"
-                    return@Button
-                }
-                val file = File(
-                    context.cacheDir,
-                    "IMG_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())}.jpg"
-                )
-                val outputOptions = ImageCapture.OutputFileOptions.Builder(file).build()
-                imageCapture?.takePicture(
-                    outputOptions,
-                    ContextCompat.getMainExecutor(context),
-                    object : ImageCapture.OnImageSavedCallback {
-                        override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                            onCapturePhoto(Uri.fromFile(file))
-                        }
-
-                        override fun onError(exception: ImageCaptureException) {
-                            cameraError = "Ошибка съемки: ${exception.localizedMessage}"
-                            Log.e("CameraScreen", "Photo capture failed", exception)
-                        }
+            Button(
+                onClick = {
+                    if (imageCapture == null) {
+                        cameraError = "Камера не готова"
+                        return@Button
                     }
-                )
-            }) {
+                    val file = File(
+                        context.cacheDir,
+                        "IMG_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())}.jpg"
+                    )
+                    val outputOptions = ImageCapture.OutputFileOptions.Builder(file).build()
+                    imageCapture?.takePicture(
+                        outputOptions,
+                        ContextCompat.getMainExecutor(context),
+                        object : ImageCapture.OnImageSavedCallback {
+                            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                                onCapturePhoto(Uri.fromFile(file))
+                            }
+
+                            override fun onError(exception: ImageCaptureException) {
+                                cameraError = "Ошибка съемки: ${exception.localizedMessage}"
+                                Log.e("CameraScreen", "Photo capture failed", exception)
+                            }
+                        }
+                    )
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707))
+            ) {
                 Text(stringResource(R.string.take_picture))
             }
-            Button(onClick = {
-                galleryLauncher.launch("image/*")
-            }) {
+            Button(
+                onClick = {
+                    galleryLauncher.launch("image/*")
+                },
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707))
+            ) {
                 Text(stringResource(R.string.gallery))
             }
         }
@@ -177,6 +184,7 @@ fun CameraScreen(
             Spacer(modifier = Modifier.height(16.dp))
             Button(
                 onClick = onAnalyzeClick,
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707)),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(stringResource(R.string.analyze_photo))

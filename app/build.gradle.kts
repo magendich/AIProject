@@ -61,6 +61,7 @@ dependencies {
     implementation(libs.coil.compose)
     implementation(libs.accompanist.permissions)
     testImplementation(libs.junit)
+    implementation(libs.androidx.navigation.compose)
 
     //  Hilt
     implementation(libs.hilt.core)
@@ -68,10 +69,16 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     //  Retrofit 
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
-    implementation(libs.okhttp)
-    implementation(libs.gson)
+//    implementation(libs.retrofit)
+//    implementation(libs.retrofit.gson)
+//    implementation(libs.okhttp)
+//    implementation(libs.gson)
+
+    implementation(project(":common"))
+    
+
+    // Icons
+    implementation(libs.androidx.material.icons.extended)
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

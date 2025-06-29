@@ -4,11 +4,8 @@ import android.Manifest
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,13 +13,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.example.aiproject.R
 import com.example.aiproject.presentation.ui.camera.CameraScreen
 import com.example.aiproject.presentation.ui.camera.CameraViewModel
+import com.example.aiproject.presentation.ui.cars.CarModelsViewModel
+import com.example.aiproject.presentation.ui.cars.CarsScreen
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
@@ -39,6 +35,9 @@ internal fun MainScreen(
         rememberPermissionState(Manifest.permission.CAMERA)
     var showCamera by remember { mutableStateOf(false) }
     val cameraUiState by viewModel.cameraUiState.collectAsStateWithLifecycle()
+
+    val carModelsViewModel: CarModelsViewModel = hiltViewModel()
+    val cars by carModelsViewModel.state.collectAsStateWithLifecycle()
 
 
     Box(
@@ -58,18 +57,13 @@ internal fun MainScreen(
                 }
             )
         } else {
-            Button(
-                onClick = {
-                    if (cameraPermissionState.status.isGranted) {
-                        showCamera = true
-                    } else {
-                        cameraPermissionState.launchPermissionRequest()
-                    }
-                },
-                modifier = Modifier.padding(16.dp),
-            ) {
-                Text(text = stringResource(id = R.string.take_car_picture))
-            }
+            CarsScreen(
+                carsList = cars,
+                onItemClick = { },
+                isCameraGranted = cameraPermissionState.status.isGranted,
+                onRequestPermission = { cameraPermissionState.launchPermissionRequest() },
+                onOpenCamera = { showCamera = true }
+            )
         }
     }
 }
