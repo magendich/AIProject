@@ -48,7 +48,9 @@ internal fun CarsListScreen(
     onOpenCamera: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(
+        modifier = modifier.fillMaxSize()
+    ) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(12.dp),
@@ -99,7 +101,7 @@ fun ExpandableCameraButton(
             .height(48.dp),
         shape = RoundedCornerShape(32.dp),
         contentPadding = PaddingValues(0.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707))
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C))
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),

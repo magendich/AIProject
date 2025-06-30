@@ -154,7 +154,7 @@ private fun CarInfoCard(
             }
 
             Button(
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707)),
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C)),
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -171,7 +171,7 @@ private fun CarInfoCard(
                     fontSize = 16.sp,
                     color = Color.White,
                     fontWeight = FontWeight.Medium,
-                    modifier = Modifier.padding(vertical = 2.dp)
+                    modifier = Modifier.padding(vertical = 4.dp)
                 )
             }
         }

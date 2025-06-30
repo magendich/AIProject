@@ -8,5 +8,6 @@ data class CameraUiState(
     val isPhotoSelected: Boolean = false,
     val errorMessage: String? = null,
     val resultText: String? = null,
-    val imageBitmap: Bitmap? = null
+    val imageBitmap: Bitmap? = null,
+    val isLoading: Boolean = false,
 )

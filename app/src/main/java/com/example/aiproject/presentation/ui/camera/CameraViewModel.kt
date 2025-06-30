@@ -32,13 +32,16 @@ class CameraViewModel @Inject constructor(
             it.copy(photoUri = uri, isPhotoSelected = true)
         }
 
-    fun onAnalyzeClick(base64Image: String, bitmap: Bitmap) {
+    fun onAnalyzeClick(base64Image: String, bitmap: Bitmap, onSuccess: () -> Unit) {
         if (base64Image.isBlank()) {
             Log.e("CameraViewModel", "Image Base64 is null or empty")
             return
         }
 
         viewModelScope.launch {
+            _cameraUiState.update {
+                it.copy(isLoading = true, errorMessage = null)
+            }
             try {
                 val result = getCarImageAIDescriptionUseCase(base64Image)
                 Log.d("CameraViewModel", "AI result: ${result.description}")
@@ -47,16 +50,33 @@ class CameraViewModel @Inject constructor(
                     it.copy(
                         resultText = result.description,
                         imageBitmap = bitmap,
-                        photoUri = null,
-                        isPhotoSelected = false
+                        isPhotoSelected = false,
+                        isLoading = false
                     )
                 }
+                onSuccess()
             } catch (e: Exception) {
                 Log.e("CameraViewModel", "AI request failed: ${e.localizedMessage}", e)
                 _cameraUiState.update {
-                    it.copy(errorMessage = "Не удалось проанализировать изображение")
+                    it.copy(
+                        errorMessage = "Не удалось проанализировать изображение",
+                        isLoading = false
+                    )
                 }
             }
+        }
+    }
+
+    fun resetPhotoSelection() {
+        _cameraUiState.update {
+            it.copy(
+                photoUri = null,
+                imageBitmap = null,
+                resultText = null,
+                isPhotoSelected = false,
+                isLoading = false,
+                errorMessage = null
+            )
         }
     }
 }

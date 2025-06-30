@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Car Rate AI</string>
     <string name="take_car_picture">Сделать фото авто</string>
-    <string name="analyze_photo">Анализировать фото</string>
-    <string name="gallery">Галерея</string>"Сделать фото"
+    <string name="analyze_car">Анализировать автомобиль</string>
+    <string name="choose_another_photo">Выбрать другое фото</string>
+    <string name="gallery">Галерея</string>
     <string name="take_picture">Сделать фото</string>
     <string name="camera_not_ready">Камера не готова</string>
     <string name="label_country">Страна</string>
@@ -13,4 +14,12 @@
     <string name="button_buy">Купить</string>
     <string name="button_book">Забронировать</string>
     <string name="button_order">Заказать</string>
+    <string name="cars_list_title">Список автомобилей</string>
+    <string name="car_info_title">Информация о машине</string>
+    <string name="camera_title">Камера</string>
+    <string name="ai_result_title">Результат анализа</string>
+    <string name="app_default_title">Приложение</string>
+    <string name="back_to_main_screen">Вернуться на главный экарн</string>
+    <string name="analysis_car">Анализ автомобиля</string>
+    <string name="loading">Загрузка..</string>
 </resources>

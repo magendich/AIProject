@@ -24,8 +24,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CameraAlt
+import androidx.compose.material.icons.filled.Photo
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -56,7 +61,9 @@ fun CameraScreen(
     state: CameraUiState,
     onCapturePhoto: (Uri) -> Unit,
     onPickFromGallery: (Uri) -> Unit,
-    onAnalyzeClick: () -> Unit
+    onAnalyzeClick: () -> Unit,
+    chooseAnotherPhotoClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
     val lifecycleOwner = LocalLifecycleOwner.current
@@ -68,8 +75,6 @@ fun CameraScreen(
     val galleryLauncher = rememberLauncherForActivityResult(GetContent()) { uri: Uri? ->
         if (uri != null) {
             onPickFromGallery(uri)
-        } else {
-            cameraError = "Фото не выбрано"
         }
     }
 
@@ -81,7 +86,7 @@ fun CameraScreen(
     }
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
             .windowInsetsPadding(WindowInsets.safeDrawing),
@@ -140,54 +145,92 @@ fun CameraScreen(
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-            Button(
-                onClick = {
-                    if (imageCapture == null) {
-                        cameraError = "Камера не готова"
-                        return@Button
-                    }
-                    val file = File(
-                        context.cacheDir,
-                        "IMG_${SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())}.jpg"
-                    )
-                    val outputOptions = ImageCapture.OutputFileOptions.Builder(file).build()
-                    imageCapture?.takePicture(
-                        outputOptions,
-                        ContextCompat.getMainExecutor(context),
-                        object : ImageCapture.OnImageSavedCallback {
-                            override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
-                                onCapturePhoto(Uri.fromFile(file))
-                            }
-
-                            override fun onError(exception: ImageCaptureException) {
-                                cameraError = "Ошибка съемки: ${exception.localizedMessage}"
-                                Log.e("CameraScreen", "Photo capture failed", exception)
-                            }
+        if (!state.isPhotoSelected) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                Button(
+                    onClick = {
+                        if (imageCapture == null) {
+                            cameraError = "Камера не готова"
+                            return@Button
                         }
+                        val file = File(
+                            context.cacheDir,
+                            "IMG_${
+                                SimpleDateFormat(
+                                    "yyyyMMdd_HHmmss",
+                                    Locale.US
+                                ).format(Date())
+                            }.jpg"
+                        )
+                        val outputOptions = ImageCapture.OutputFileOptions.Builder(file).build()
+                        imageCapture?.takePicture(
+                            outputOptions,
+                            ContextCompat.getMainExecutor(context),
+                            object : ImageCapture.OnImageSavedCallback {
+                                override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
+                                    onCapturePhoto(Uri.fromFile(file))
+                                }
+
+                                override fun onError(exception: ImageCaptureException) {
+                                    cameraError = "Ошибка съемки: ${exception.localizedMessage}"
+                                    Log.e("CameraScreen", "Photo capture failed", exception)
+                                }
+                            }
+                        )
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.CameraAlt,
+                        contentDescription = "Сделать фото"
                     )
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707))
-            ) {
-                Text(stringResource(R.string.take_picture))
+                }
+                Button(
+                    onClick = {
+                        galleryLauncher.launch("image/*")
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C))
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Photo,
+                        contentDescription = "Галлерея"
+                    )
+                }
             }
-            Button(
-                onClick = {
-                    galleryLauncher.launch("image/*")
-                },
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707))
-            ) {
-                Text(stringResource(R.string.gallery))
-            }
-        }
-        if (state.isPhotoSelected) {
-            Spacer(modifier = Modifier.height(16.dp))
-            Button(
-                onClick = onAnalyzeClick,
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFDE0707)),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(stringResource(R.string.analyze_photo))
+        } else {
+            Column {
+                Button(
+                    onClick = onAnalyzeClick,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C)),
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(top = 8.dp)
+                ) {
+                    Text(
+                        stringResource(R.string.analyze_car),
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                }
+
+                Button(
+                    onClick = chooseAnotherPhotoClick,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C)),
+                    shape = RoundedCornerShape(12.dp),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .padding(top = 8.dp)
+                ) {
+                    Text(
+                        stringResource(R.string.choose_another_photo),
+                        modifier = Modifier.padding(vertical = 4.dp)
+                    )
+                }
             }
         }
     }
