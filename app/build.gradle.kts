@@ -75,7 +75,7 @@ dependencies {
 //    implementation(libs.gson)
 
     implementation(project(":common"))
-    
+
 
     // Icons
     implementation(libs.androidx.material.icons.extended)
@@ -86,4 +86,12 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+
+    // Interceptor
+    implementation(libs.logging.interceptor)
+
+    // Video
+    implementation(libs.androidx.media3.exoplayer)
+    implementation(libs.androidx.media3.ui)
 }

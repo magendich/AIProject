@@ -33,8 +33,8 @@ import com.example.aiproject.R
 
 @Composable
 internal fun CarItemCompose(
-    item: CarItem,
-    onItemClick: (item: CarItem) -> Unit,
+    item: CarListItem,
+    onItemClick: (item: CarListItem) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -94,7 +94,7 @@ internal fun CarItemCompose(
 private fun CarItemComposeCompose() {
     CarItemCompose(
         item =
-            CarItem(
+            CarListItem(
                 model = "Camry",
                 brand = "Toyota"
             ),

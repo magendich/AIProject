@@ -1,5 +1,6 @@
 package com.example.aiproject.di
 
+import com.example.aiproject.data.api.AIApiService
 import com.example.aiproject.data.api.CarApiService
 import com.example.aiproject.network.RetrofitHolder
 import dagger.Module
@@ -32,6 +33,10 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
     @Provides
-    fun provideApi(): CarApiService =
-        RetrofitHolder.retrofit.create(CarApiService::class.java)
+    fun provideCarApi(): CarApiService =
+        RetrofitHolder.carQueryRetrofit.create(CarApiService::class.java)
+
+    @Provides
+    fun provideAIApi(): AIApiService =
+        RetrofitHolder.openRouterRetrofit.create(AIApiService::class.java)
 }

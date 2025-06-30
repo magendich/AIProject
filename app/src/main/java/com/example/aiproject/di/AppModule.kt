@@ -1,6 +1,8 @@
 package com.example.aiproject.di
 
+import com.example.aiproject.data.repository.AIRepositoryImpl
 import com.example.aiproject.data.repository.CarRepositoryImpl
+import com.example.aiproject.domain.repository.AIRepository
 import com.example.aiproject.domain.repository.CarRepository
 import dagger.Binds
 import dagger.Module
@@ -17,4 +19,11 @@ abstract class AppModule {
     abstract fun bindCarRepository(
         carRepositoryImpl: CarRepositoryImpl
     ): CarRepository
+
+
+    @Binds
+    @Singleton
+    abstract fun bindAIRepository(
+        aiRepositoryImpl: AIRepositoryImpl
+    ): AIRepository
 }
