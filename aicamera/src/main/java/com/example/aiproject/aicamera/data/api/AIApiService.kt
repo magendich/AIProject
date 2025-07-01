@@ -6,8 +6,7 @@ import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-private const val API_KEY =
-    "Bearer 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"
+private const val API_KEY = "api_key"
 
 interface AIApiService {
 
