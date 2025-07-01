@@ -1,4 +1,4 @@
-package com.example.aiproject.presentation.ui.camera
+package com.example.aiproject.aicamera.presenation
 
 import android.graphics.Bitmap
 import android.net.Uri

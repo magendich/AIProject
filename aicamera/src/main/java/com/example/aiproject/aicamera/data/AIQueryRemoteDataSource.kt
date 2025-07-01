@@ -1,11 +1,11 @@
-package com.example.aiproject.data
+package com.example.aiproject.aicamera.data
 
-import com.example.aiproject.data.api.AIApiService
-import com.example.aiproject.data.dto.AiRequestBody
-import com.example.aiproject.data.dto.AiResponse
-import com.example.aiproject.data.dto.ContentItem
-import com.example.aiproject.data.dto.ImageUrl
-import com.example.aiproject.data.dto.Message
+import com.example.aiproject.aicamera.data.api.AIApiService
+import com.example.aiproject.aicamera.data.dto.AiRequestBody
+import com.example.aiproject.aicamera.data.dto.AiResponse
+import com.example.aiproject.aicamera.data.dto.ContentItem
+import com.example.aiproject.aicamera.data.dto.ImageUrl
+import com.example.aiproject.aicamera.data.dto.Message
 import javax.inject.Inject
 
 class AIQueryRemoteDataSource @Inject constructor(

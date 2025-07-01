@@ -1,11 +1,11 @@
-package com.example.aiproject.presentation.ui.camera
+package com.example.aiproject.aicamera.presenation
 
 import android.graphics.Bitmap
 import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.aiproject.domain.usecase.GetCarImageAIDescriptionUseCase
+import com.example.aiproject.aicamera.domain.usecase.GetCarImageAIDescriptionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

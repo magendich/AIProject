@@ -29,7 +29,8 @@ class CarsViewModel @Inject constructor(
 
     private fun fetchToyotaModels() {
         viewModelScope.launch {
-            _state.value = getCarModelsUseCase.invoke().map {
+            val models = getCarModelsUseCase.invoke()
+            _state.value = models.map {
                 CarListItem(
                     model = it.name,
                     brand = capitalizeFirstLetter(it.brand)
@@ -44,10 +45,9 @@ class CarsViewModel @Inject constructor(
         return capitalizedFirstChar + text.substring(1)
     }
 
-
     fun onCarSelected(brand: String, model: String, onResult: () -> Unit) {
         viewModelScope.launch {
-            val carInfo = getCarDetailedInfoUseCase(brand, model).firstOrNull()
+            val carInfo = getCarDetailedInfoUseCase.invoke(brand, model).firstOrNull()
             if (carInfo != null) {
                 _selectedCarDetail.value = CarCardItem(
                     headline = capitalizeFirstLetter(carInfo.brand),

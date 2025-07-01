@@ -24,7 +24,6 @@ import com.example.aiproject.R
 import com.example.aiproject.navigation.AppNavigation
 import com.example.aiproject.navigation.NavRoutes
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MainScreen(

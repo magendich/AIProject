@@ -36,16 +36,17 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-
 @Composable
 fun MainApp(
     showSplash: Boolean,
     onSplashComplete: () -> Unit
 ) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        if (showSplash)
+        if (showSplash) {
             SplashScreen(onFinish = onSplashComplete)
-        else MainScreen(modifier = Modifier.padding(innerPadding))
+        } else {
+            MainScreen(modifier = Modifier.padding(innerPadding))
+        }
     }
 }
 

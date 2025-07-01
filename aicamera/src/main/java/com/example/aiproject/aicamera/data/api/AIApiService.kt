@@ -1,7 +1,7 @@
-package com.example.aiproject.data.api
+package com.example.aiproject.aicamera.data.api
 
-import com.example.aiproject.data.dto.AiRequestBody
-import com.example.aiproject.data.dto.AiResponse
+import com.example.aiproject.aicamera.data.dto.AiRequestBody
+import com.example.aiproject.aicamera.data.dto.AiResponse
 import retrofit2.http.Body
 import retrofit2.http.Header
 import retrofit2.http.POST

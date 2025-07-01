@@ -30,7 +30,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aiproject.R
 
-
 @Composable
 internal fun CarItemCompose(
     item: CarListItem,
@@ -75,7 +74,8 @@ internal fun CarItemCompose(
                 Text(
                     text = item.model,
                     style = MaterialTheme.typography.bodyMedium.copy(fontSize = 14.sp),
-                    color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(top = 8.dp)
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp)
                 )
             }
             Spacer(modifier = Modifier.weight(1f))
@@ -91,13 +91,13 @@ internal fun CarItemCompose(
 
 @Composable
 @Preview(showBackground = true)
-private fun CarItemComposeCompose() {
+private fun CarItemComposePreview() {
     CarItemCompose(
         item =
-            CarListItem(
-                model = "Camry",
-                brand = "Toyota"
-            ),
+        CarListItem(
+            model = "Camry",
+            brand = "Toyota"
+        ),
         onItemClick = {}
     )
 }

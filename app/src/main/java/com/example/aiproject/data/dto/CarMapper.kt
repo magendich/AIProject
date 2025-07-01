@@ -9,7 +9,6 @@ fun CarModelDto.toCarModel(): CarModel =
         brand = this.brand
     )
 
-
 fun TrimsDto.toDetailedInfo(): CarDetailedInfo =
     CarDetailedInfo(
         brand = this.brand,

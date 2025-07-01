@@ -1,4 +1,4 @@
-package com.example.aiproject.presentation.ui.camera
+package com.example.aiproject.aicamera.presenation
 
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
@@ -26,10 +26,11 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.example.aiproject.R
+import com.example.aiproject.aicamera.R
+
 
 @Composable
-internal fun LoadingScreen() {
+fun LoadingScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()

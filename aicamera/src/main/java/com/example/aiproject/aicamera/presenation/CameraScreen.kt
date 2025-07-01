@@ -1,4 +1,4 @@
-package com.example.aiproject.presentation.ui.camera
+package com.example.aiproject.aicamera.presenation
 
 import android.net.Uri
 import android.util.Log
@@ -49,7 +49,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import coil.compose.rememberAsyncImagePainter
-import com.example.aiproject.R
+import com.example.aiproject.aicamera.R
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date

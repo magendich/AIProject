@@ -92,9 +92,11 @@ fun ExpandableCameraButton(
 
     Button(
         onClick = {
-            if (expanded)
+            if (expanded) {
                 if (isCameraGranted) onOpenCamera() else onRequestPermission()
-            else expanded = true
+            } else {
+                expanded = true
+            }
         },
         modifier = modifier
             .width(buttonWidth)
@@ -148,7 +150,6 @@ fun ExpandableCameraButton(
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable

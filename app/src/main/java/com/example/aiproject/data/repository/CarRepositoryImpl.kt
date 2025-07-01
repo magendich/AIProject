@@ -16,5 +16,4 @@ class CarRepositoryImpl @Inject constructor(
 
     override suspend fun getModelInfo(make: String, model: String): List<CarDetailedInfo> =
         remoteDataSource.getModelInfo(make, model).trims.map { it.toDetailedInfo() }
-
 }

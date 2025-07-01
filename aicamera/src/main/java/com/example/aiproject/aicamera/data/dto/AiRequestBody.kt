@@ -1,4 +1,4 @@
-package com.example.aiproject.data.dto
+package com.example.aiproject.aicamera.data.dto
 
 import com.google.gson.annotations.SerializedName
 

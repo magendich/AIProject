@@ -1,6 +1,7 @@
-package com.example.aiproject.presentation.ui.camera
+package com.example.aiproject.aicamera.presenation
 
 import android.graphics.Bitmap
+import android.graphics.Color.DKGRAY
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -20,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,10 +28,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.createBitmap
-import com.example.aiproject.R
+import com.example.aiproject.aicamera.R
+
 
 @Composable
-internal fun AIAnalysisResultScreen(
+fun AIAnalysisResultScreen(
     imageBitmap: Bitmap,
     resultText: String,
     backToMainScreen: () -> Unit,
@@ -43,7 +44,7 @@ internal fun AIAnalysisResultScreen(
             .padding(horizontal = 16.dp, vertical = 8.dp),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(4.dp),
-        colors = CardDefaults.cardColors(containerColor = Color.White)
+        colors = CardDefaults.cardColors(containerColor = androidx.compose.ui.graphics.Color.White)
     ) {
         Column {
             Image(
@@ -63,7 +64,11 @@ internal fun AIAnalysisResultScreen(
                     .padding(bottom = 16.dp)
             )
             Button(
-                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF25324C)),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = _root_ide_package_.androidx.compose.ui.graphics.Color(
+                        0xFF25324C
+                    )
+                ),
                 shape = RoundedCornerShape(8.dp),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -78,7 +83,7 @@ internal fun AIAnalysisResultScreen(
                 Text(
                     text = stringResource(R.string.back_to_main_screen),
                     fontSize = 16.sp,
-                    color = Color.White,
+                    color = androidx.compose.ui.graphics.Color.White,
                     fontWeight = FontWeight.Medium,
                     modifier = Modifier.padding(vertical = 4.dp)
                 )
@@ -90,10 +95,10 @@ internal fun AIAnalysisResultScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun AIAnalysisResultScreenPreview() {
+private fun AIAnalysisResultScreenPreview() {
 
     val dummyBitmap = createBitmap(100, 100).apply {
-        eraseColor(android.graphics.Color.DKGRAY)
+        eraseColor(DKGRAY)
     }
 
     val dummyText = """

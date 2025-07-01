@@ -1,0 +1,14 @@
+style:
+  MagicNumber:
+    active: false
+  NewLineAtEndOfFile:
+    active: false
+
+naming:
+  FunctionNaming:
+    ignoreAnnotated:
+      - 'Composable'
+
+#compose:
+#  ComposeModifierRule:
+#    active: true

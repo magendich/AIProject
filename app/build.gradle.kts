@@ -4,6 +4,14 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt)
     kotlin("kapt")
+    id("io.gitlab.arturbosch.detekt") version "1.23.8"
+}
+
+detekt {
+    toolVersion = "1.23.8"
+    config = files("${rootProject.projectDir}/config/detekt/detekt.yml")
+    buildUponDefaultConfig = true
+    autoCorrect = true
 }
 
 android {
@@ -17,7 +25,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.aiproject.HiltTestRunner"
     }
 
     buildTypes {
@@ -75,15 +83,29 @@ dependencies {
 //    implementation(libs.gson)
 
     implementation(project(":common"))
+    implementation(project(":aicamera"))
 
 
     // Icons
     implementation(libs.androidx.material.icons.extended)
 
+
+    // Test
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.junit)
+    testImplementation(libs.androidx.core.testing)
+    testImplementation(libs.mockito.kotlin)
+    implementation(libs.hilt.android.v2461)
+    kapt(libs.hilt.android.compiler)
+    androidTestImplementation(libs.hilt.android.testing)
+    kaptAndroidTest(libs.hilt.android.compiler)
+    testImplementation(kotlin("test"))
+
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
@@ -94,4 +116,7 @@ dependencies {
     // Video
     implementation(libs.androidx.media3.exoplayer)
     implementation(libs.androidx.media3.ui)
+
+    // Detekt
+    detektPlugins(libs.detekt.formatting)
 }

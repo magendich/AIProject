@@ -1,6 +1,6 @@
-package com.example.aiproject.domain.usecase
+package com.example.aiproject.aicamera.domain.usecase
 
-import com.example.aiproject.domain.repository.AIRepository
+import com.example.aiproject.aicamera.domain.repository.AIRepository
 import javax.inject.Inject
 
 class GetCarImageAIDescriptionUseCase @Inject constructor(

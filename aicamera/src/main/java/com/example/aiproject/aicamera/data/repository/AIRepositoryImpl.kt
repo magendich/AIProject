@@ -1,8 +1,8 @@
-package com.example.aiproject.data.repository
+package com.example.aiproject.aicamera.data.repository
 
-import com.example.aiproject.data.AIQueryRemoteDataSource
-import com.example.aiproject.domain.model.AiCarModel
-import com.example.aiproject.domain.repository.AIRepository
+import com.example.aiproject.aicamera.data.AIQueryRemoteDataSource
+import com.example.aiproject.aicamera.domain.model.AiCarModel
+import com.example.aiproject.aicamera.domain.repository.AIRepository
 import javax.inject.Inject
 
 class AIRepositoryImpl @Inject constructor(

@@ -9,10 +9,10 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.aiproject.presentation.ui.camera.AIAnalysisResultScreen
-import com.example.aiproject.presentation.ui.camera.CameraScreen
-import com.example.aiproject.presentation.ui.camera.CameraViewModel
-import com.example.aiproject.presentation.ui.camera.LoadingScreen
+import com.example.aiproject.aicamera.presenation.AIAnalysisResultScreen
+import com.example.aiproject.aicamera.presenation.CameraScreen
+import com.example.aiproject.aicamera.presenation.CameraViewModel
+import com.example.aiproject.aicamera.presenation.LoadingScreen
 import com.example.aiproject.presentation.ui.cars.CarInfoScreen
 import com.example.aiproject.presentation.ui.cars.CarsListScreen
 import com.example.aiproject.presentation.ui.cars.CarsViewModel
@@ -21,7 +21,6 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionState
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
@@ -58,7 +57,7 @@ fun AppNavigation(
             if (carInfoState != null) {
                 CarInfoScreen(
                     onBuyClick = {},
-                    carItem = carInfoState!!
+                    carItem = carInfoState!!,
                 )
             }
         }

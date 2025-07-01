@@ -63,7 +63,6 @@ internal fun CarInfoScreen(carItem: CarCardItem, onBuyClick: () -> Unit) {
     }
 }
 
-
 @Composable
 private fun CarInfoCard(
     headline: String,
@@ -89,7 +88,9 @@ private fun CarInfoCard(
                 playWhenReady = true
                 repeatMode = Player.REPEAT_MODE_ALL
             }
-        } else null
+        } else {
+            null
+        }
     }
 
     DisposableEffect(player) {
@@ -149,7 +150,12 @@ private fun CarInfoCard(
                 if (!country.isNullOrBlank()) InfoRow(labelResId = R.string.label_country, value = country)
                 if (!horsepower.isNullOrBlank()) InfoRow(labelResId = R.string.label_horsepower, value = horsepower)
                 if (!topSpeedKph.isNullOrBlank()) InfoRow(labelResId = R.string.label_top_speed, value = topSpeedKph)
-                if (!transmissionType.isNullOrBlank()) InfoRow(labelResId = R.string.label_transmission, value = transmissionType)
+                if (!transmissionType.isNullOrBlank()) {
+                    InfoRow(
+                        labelResId = R.string.label_transmission,
+                        value = transmissionType
+                    )
+                }
                 if (!driveType.isNullOrBlank()) InfoRow(labelResId = R.string.label_drive, value = driveType)
             }
 
@@ -178,7 +184,6 @@ private fun CarInfoCard(
     }
 }
 
-
 @Composable
 private fun InfoRow(labelResId: Int, value: String) {
     Row(
@@ -198,7 +203,6 @@ private fun InfoRow(labelResId: Int, value: String) {
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 private fun CarInfoCardPreview() {
@@ -213,4 +217,3 @@ private fun CarInfoCardPreview() {
         onBuyClick = {},
     )
 }
-
