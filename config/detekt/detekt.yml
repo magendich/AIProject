@@ -9,6 +9,6 @@ naming:
     ignoreAnnotated:
       - 'Composable'
 
-#compose:
-#  ComposeModifierRule:
-#    active: true
+compose:
+  ComposeModifierRule:
+    active: true

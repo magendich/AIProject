@@ -34,7 +34,6 @@ class CameraViewModel @Inject constructor(
 
     fun onAnalyzeClick(base64Image: String, bitmap: Bitmap, onSuccess: () -> Unit) {
         if (base64Image.isBlank()) {
-            Log.e("CameraViewModel", "Image Base64 is null or empty")
             return
         }
 

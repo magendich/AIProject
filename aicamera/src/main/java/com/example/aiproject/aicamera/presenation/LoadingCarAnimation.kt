@@ -9,6 +9,7 @@ import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -37,12 +38,14 @@ fun LoadingScreen() {
             .background(Color.White),
         contentAlignment = Alignment.Center
     ) {
-        LoadingCarAnimation(carColor = Color.Black)
-        Text(
-            text = stringResource(R.string.loading),
-            modifier = Modifier.padding(top = 16.dp),
-            style = MaterialTheme.typography.labelLarge
-        )
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            LoadingCarAnimation(carColor = Color.Black)
+            Text(
+                text = stringResource(R.string.loading),
+                modifier = Modifier.padding(top = 48.dp),
+                style = MaterialTheme.typography.labelLarge
+            )
+        }
     }
 }
 
@@ -74,8 +77,7 @@ private fun LoadingCarAnimation(
     )
 
     Box(
-        modifier = modifier
-            .fillMaxSize(),
+        modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
         Icon(

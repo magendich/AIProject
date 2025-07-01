@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.hilt)
     kotlin("kapt")
     id("io.gitlab.arturbosch.detekt") version "1.23.8"
+    id("com.github.triplet.play")
 }
 
 detekt {

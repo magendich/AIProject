@@ -6,4 +6,5 @@ plugins {
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.android.library) apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.8" apply false
+    id("com.github.triplet.play") version "3.9.0" apply false
 }
